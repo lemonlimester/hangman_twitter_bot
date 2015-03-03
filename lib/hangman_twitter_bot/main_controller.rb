@@ -15,7 +15,7 @@ class MainController
     elsif word.nil? || word.empty?
       "The word is invalid."
     else
-      @game_controller = GameController.new(word, @tweet_handler, @tweet_handler)
+      @game_controller = GameController.new(word, @tweet_handler)
     end
   end
 end

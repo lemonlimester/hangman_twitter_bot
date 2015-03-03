@@ -1,17 +1,16 @@
 class GameController
   attr_reader :id, :answer
 
-  def initialize(word, game_input_handler, game_output_handler)
+  def initialize(word, handler)
     @answer = word
     @id = DateTime.now.strftime('%Y%m%d%H%M%S')
     @word_controller = WordController.new(word)
     @hangman_creator = HangmanCreator.new
 
-    @input_handler = game_input_handler
-    @output_handler = game_output_handler
+    @handler = handler
 
-    @input_handler.add_game_handler(self)
-    @output_handler.display(id, game_state)
+    @handler.add_game_handler(self)
+    @handler.display(id, game_state)
   end
 
   def process_letters(letters)
@@ -25,7 +24,7 @@ class GameController
     responses = [game_state]
     if is_game_ended?
       responses.push(game_result)
-      @input_handler.remove_game_handler(self)
+      @handler.remove_game_handler(self)
     end
 
     responses

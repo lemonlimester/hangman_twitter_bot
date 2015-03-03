@@ -1,4 +1,4 @@
-require "Twitter"
+require "twitter"
 require_relative "../../secrets"
 
 class TwitterSession

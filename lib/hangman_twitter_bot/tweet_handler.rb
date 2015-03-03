@@ -45,7 +45,7 @@ class TweetHandler
     @session.client.update(text)
   end
 
-  private
+private
 
   def handle_tweet(tweet)
     return if is_tweet_from_game_handler?(tweet)
